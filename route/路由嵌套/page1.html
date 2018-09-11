@@ -1,0 +1,16 @@
+<div class="common" >
+	<h3>这是page1页面</h3>
+	<ul class="subnav nav-color cl margin">
+		<li><a ui-sref="page1.child1">跳到page1.child1</a></li><br /><br />
+		<li><a ui-sref="page2">跳到page2</a></li><br /><br />
+		
+	</ul>
+	
+	<!--开启注释 可跳到page1.child1-->
+	<div class="page1" ui-view></div> 
+	
+	
+	<div class="common red">
+		<div class="page1" ui-view='page1-v2'></div>
+	</div>
+</div>

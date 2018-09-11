@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <title>国旅在线</title>
+	<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+    
+
+    
+    <link rel="stylesheet" href="css/style.min.css" />
+	<link rel="stylesheet" href="css/sy.css" />
+	
+	<script src="js/myApp.js"></script>
+	<script src="js/controller.js"></script>
+
+	
+</head>
+<body ng-controller="myCtrl">
+<ion-nav-view>
+		<ion-view>
+			<div class="bar bar-header">
+				<button class="button back-button  button-icon ion-ios-arrow-left" ui-sref="vip"></button>
+				<h4>个人资料</h4>
+			</div>
+			<ion-content class="personal">
+				<div class="personal-1">
+					<a>
+						<div class="personal-1-1">
+							<span class="personal-1-1span">头像</span>
+							<div class="personal-1-1-img"><img route-image-lazy-src="http://file.cits.cn/originalPhoto/20171130/20171130145811_463.jpg" image-lazy-loader="img/load/lg.png" src="images/lg.png"></div>
+							<i class="ion-ios-arrow-right"></i>
+						</div>
+					</a>
+					<div style="display: none"><input type="file" ></div>
+					<div class="personal-1-2" ng-click="goPersonal('personal3')">
+						<a class="" >
+							<span class="personal-1-2span">昵称</span>
+							<span class="sy_persona_name">星痕</span>
+							<i class="ion-ios-arrow-right"></i>
+						</a>
+					</div>
+				</div>
+				
+				<div class="persona2">
+						<a>
+							<div class="persona2-1" ng-click="goPersonal('personalX1')">
+								<span class="persona2-1-1">姓名</span> 
+								<span class="persona2-1-2"></span>
+								<i class="ion-ios-arrow-right"></i>
+							</div>
+						</a>
+						<div class="persona2-1 persona2-2" ng-click="goPersonal('personal7')">
+							<a>
+								<span class="persona2-1-1">手机号</span> 
+								<span class="sy_persona2_con">15311336298</span>
+								<i class="ion-ios-arrow-right"></i>
+							</a>
+						</div>
+			    </div>
+			    
+			    <div class="persona3">
+			    	<a class="">
+			    		<div class="persona2-1">
+			    			<span class="persona2-1-1">生日</span> 
+			    			<span class="sy_persona2_con" ng-readonle="true" mobiscroll-date="settings" mobiscroll-instance="demo" placeholder="Please Select...">15311336298</span>
+			    		</div>
+			    	</a>
+			    	<div class="persona2-1 persona-2-6 xiahuaxian">
+			    		<span class="persona2-1-1">性别</span>
+			    		<span class="sy_persona2_con">15311336298</span>
+			    	</div>
+			    	<div class="persona2-1 persona-2-6 xiahuaxian" ng-click="goPersonal('personalX2')">
+			    		<span class="persona2-1-1" >身份证</span> 
+			    		<span class="sy_persona2_con">15311336298</span>
+			    		<i class="ion-ios-arrow-right"></i>
+			    	</div>
+			    	<div class="persona2-1 xiahuaxian" ng-click="goPersonal('personalX3')">
+			    		<a>
+			    			<span class="persona2-1-1" >邮箱</span> 
+			    			<span class="sy_persona2_con">15311336298</span>
+			    			<i class="ion-ios-arrow-right"></i>
+			    		</a>
+			    	</div>
+			    	<div class="persona2-1 xiahuaxian">
+			    		<a>
+			    			<span class="persona2-1-1">婚姻状况</span> 
+			    			<span class="sy_persona2_con">15311336298</span>
+			    		</a>
+			    	</div>
+			    	<div class="persona2-1 xiahuaxian">
+			    		<a>
+			    			<span class="persona2-1-1">职业</span> 
+			    			<span class="sy_persona2_con">15311336298</span>
+			    		</a>
+			    	</div>
+			    	<div class="persona2-1 xiahuaxian">
+			    		<a>
+			    			<span class="persona2-1-1">学历</span> 
+			    			<span class="sy_persona2_con">15311336298</span>
+			    		</a>
+			    	</div>
+			    	<div class="persona2-1 xiahuaxian"  ng-click="goPersonal('personal4')">
+			    		<a >
+			    			<span class="persona2-1-1">修改密码</span> 
+			    			<span class="persona2-1-3">点击修改密码</span> 
+			    			<i class="ion-ios-arrow-right"></i>
+			    		</a>
+			    	</div>
+			    </div>
+
+			    <div  class="cits-form-button denglu-2">
+			    	<button class="button button-assertive denglu-2-1">退出登录</button>
+			    </div>
+			</ion-content>
+		</ion-view>
+
+</ion-nav-view>
+</body>
+</html>
+

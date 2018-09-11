@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+   <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+   <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+   <style>
+   	.box{width:300px;height:300px;margin:100px auto 0;text-align: center;}
+   	.blue{background:blue;}
+   	.yellow{background:yellow;}
+   	.red{background:red;}
+   	.sy_active .slider-pager{display:none;}
+   	button{margin:0 auto;}
+   </style>
+    <script>
+        var app = angular.module('myApp', ['ionic']);
+        app.config(function($stateProvider,$urlRouterProvider) {/*$urlRouterProvider*/
+            $stateProvider
+                .state('home', {
+                    url: '/',
+                    templateUrl: 'page1.html'
+                })
+                .state('tiaozhuan', {
+                    url: '/tiaozhuan',
+                    templateUrl: 'page2.html'
+                })
+            $urlRouterProvider.otherwise("/")
+        });
+        
+        app.controller("myCtrl",["$scope","$ionicSlideBoxDelegate",function($scope,$ionicSlideBoxDelegate){
+        	      
+	      //设置
+	       $scope.sy_carousel="";
+	        $scope.slideChange = function () {
+	        //alert($index);
+	        //console.log("nextSlide index = ", $index);
+	          console.log($ionicSlideBoxDelegate);
+	          console.log($ionicSlideBoxDelegate.currentIndex());
+	          console.log($ionicSlideBoxDelegate.count());
+	          
+	          var s1=$ionicSlideBoxDelegate.currentIndex();
+	          var s2=$ionicSlideBoxDelegate.count();
+	          
+	          if(s1+1==s2){
+	          	$scope.sy_carousel="sy_active";
+	
+	          }else{
+	          	$scope.sy_carousel="";
+	
+	          }
+	      };
+
+        }])
+    </script>
+</head>
+<body ng-app="myApp" >
+
+ <script type='text/ng-template' id="page1.html">
+        <ion-view title="Tiaozhuan" ng-controller="myCtrl">
+		    <ion-content >
+		        <ion-nav-view animation="slide-left-right">
+		            <ion-slide-box auto-play="true" does-continue="true" slide-interval="1500" on-slide-changed="slideChange()" class="{{sy_carousel}}">
+		                <ion-slide>
+		                    <div class="box blue" ></div>
+		                </ion-slide>
+		                <ion-slide>
+		                    <div class="box yellow" ></div>
+		                </ion-slide>
+		                <ion-slide on-slide-changed="slideHasChanged(index)">
+		                    <div class="box red" ><button class="button button-balanced btn" ui-sref="tiaozhuan">点击进入</button></div>
+		                </ion-slide>
+		            </ion-slide-box>
+		        </ion-nav-view>
+		    </ion-content>
+		</ion-view>
+ </script>
+ 
+ <ion-nav-view animation="slide-left-right"></ion-nav-view>
+        
+
+
+</body>
+</html>

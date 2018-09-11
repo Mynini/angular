@@ -1,0 +1,45 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+
+   <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.js"></script>
+<script src="https://cdn.bootcss.com/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>
+
+</head>
+
+<body ng-app="myApp">
+
+<ul>
+	<li><a  ui-sref="page1">首页</a></li>
+	<li><a  ui-sref="page2">page2</a></li>
+</ul>
+<div ui-view></div>
+<script>
+	angular.module('myApp',['ui.router'])
+           
+	.config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){
+		$urlRouterProvider.otherwise('page2');
+		$stateProvider
+		.state("page1",{
+		    url:"/page1",
+			templateUrl:"1.html"
+		})
+		.state("page2",{
+            url:"/page2",			
+			templateUrl:"2.html"
+		});
+	}])
+</script>
+
+ <script type="text/ng-template" id="1.html">
+      <h1> 這是第2个路由例子 </h1>
+  </script>
+
+  <script type="text/ng-template" id="2.html">
+      <h1> 小蜜是只猪 </h1>
+  </script>
+</body>
+</html>

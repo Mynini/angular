@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>菜鸟教程(runoob.com)</title>
+        <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+    </head>
+    <body ng-app="todo"  ng-controller='TodoCtrl'>
+    <ion-side-menus>
+    	<!--内容-->
+    	<ion-side-menu-content>
+    		<ion-header-bar class='bar-dark'>
+    			<h1 class='title'>主内容</h1>
+    		</ion-header-bar>
+    		<ion-content scroll="false">
+    			<!--列表-->
+    			<ion-list>
+    				<ion-item ng-repeat="task in tasks">
+    					{{task.title}}
+    				</ion-item>
+    			</ion-list>
+    		</ion-content>
+    	</ion-side-menu-content>
+    	
+    	<!--左侧-->
+    	<ion-side-menu side="left">
+    		<ion-header-bar class="bar-dark">
+    			<h1 class='title'>左侧标题</h1>
+    		</ion-header-bar>
+    	</ion-side-menu>
+    </ion-side-menus>
+   
+    
+    <script>
+    	 var app=angular.module('todo',["ionic"]);
+    	 app.controller("TodoCtrl",["$scope",function($scope){
+    	 	$scope.tasks=[
+    	 	 { title: '菜鸟教程' },
+    	 	 { title: '菜鸟教程' },
+    	 	 { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' },
+             { title: '菜鸟教程' }
+    	 	]
+    	 }])
+    </script>
+    <script src="cordova.js"></script>
+</body>
+</html>

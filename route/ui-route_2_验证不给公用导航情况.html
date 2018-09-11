@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.js"></script>
+   <script src="https://cdn.bootcss.com/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>
+	
+</head>
+<body>
+
+<div ui-view></div>
+
+<script type="text/javascript">
+	angular.module('app', ['ui.router'])
+	.config(function($stateProvider,$urlRouterProvider){
+		$urlRouterProvider.when('', 'PageTab');//默认路径路由
+		$stateProvider.state("PageTab",{
+			url:"/PageTab",
+			templateUrl:"1.html"
+		}).
+		state("PageTab.tab1",{
+			url:"/tab1",
+			templateUrl:"2.html"
+		})
+	})
+</script>
+
+ <script type="text/ng-template" id="1.html">
+      <h1> 這是第2个路由例子 </h1>
+  </script>
+
+  <script type="text/ng-template" id="2.html">
+      <h1> 小蜜是只猪 </h1>
+  </script>
+
+	
+</body>
+</html>

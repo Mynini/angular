@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+</head>
+
+
+<body>
+
+<ion-view title="修改密码">  
+<ion-nav-bar>  
+<ion-header-bar class="nav-title-slide-ios7 bar-light" align-title="center">  
+        <ion-nav-buttons side="left">  
+            <a class="button button-icon icon ion-ios-undo-outline" style="font-size: 30px;" ng-click="backBtn();"></a>  
+        </ion-nav-buttons>  
+    </ion-header-bar>  
+</ion-nav-bar>  
+  <ion-content>  
+    <form name="dataForm" novalidate="novalidate" ng-submit="save(dataForm);">  
+      <div class="list">  
+        <label class="item item-input item-floating-label">  
+          <span class="input-label">原密码</span>  
+          <input type="password" ng-model="data.password" required placeholder="请输入原密码">  
+        </label>  
+        <label class="item item-input item-floating-label">  
+          <span class="input-label">新密码</span>  
+          <input type="password" ng-model="data.newPassword" required placeholder="密码为英文和数字组成">  
+        </label>  
+        <label class="item item-input item-floating-label">  
+          <span class="input-label">确认密码</span>  
+          <input type="password" ng-model="data.confirmPassword" required placeholder="请确认登录密码">  
+        </label>  
+        <label class="item">  
+          <button class="button button-block button-positive" type="submit" ng-disabled="dataForm.$invalid">确认修改</button>  
+        </label>  
+      </div>  
+    </form>  
+  </ion-content>  
+</ion-view>  
+
+
+<script>
+var app=angular.module("myApp",["ionic"]);
+
+  .controller('UpdatePwdCtrl', function($scope, $state, $ionicHistory, LoginService, popupUtil) {  
+    $scope.data = {};  
+    $scope.backBtn = function(){  
+        $ionicHistory.goBack();  
+    };    
+    $scope.save = function(dataForm){  
+        if(dataForm.$valid){//成功为 true 否则为 false  
+            $scope.changPassword();  
+        }  
+    }  
+      
+    $scope.changPassword = function (){  
+              
+            if($scope.data.confirmPassword == $scope.data.newPassword){  
+                delete $scope.data.confirmPassword;  
+                LoginService.changepassword($scope.data)  
+                .$promise.then(function(resp){  
+                    if(resp.success){//修改成功  
+                        popupUtil.showAlert('提示','密码修改成功');  
+                          
+                        $state.go('login');//跳转登录页面  
+                          
+                    }else{  
+                        popupUtil.showAlert('提示','密码修改失败');  
+                    }  
+                }, function(err){  
+                      
+                });  
+            }else{  
+                popupUtil.showAlert('提示','两次密码输入不正确');  
+            }  
+    };  
+      
+})  
+
+  .provider('popupUtil', function(){  
+    this.$get = function($ionicPopup){  
+        var popupUtil = {};  
+        popupUtil.showConfirm = function(titleTxt, contentTxt){  
+            var confirmPopup = $ionicPopup.confirm({  
+                   title: titleTxt,  
+                   template: contentTxt  
+                 });  
+            return confirmPopup;  
+        };  
+        popupUtil.showAlert = function(titleTxt, contentTxt) {  
+            var alert = $ionicPopup.alert({  
+               title: titleTxt,  
+               template: contentTxt  
+             });  
+            return alert;  
+        };  
+        return popupUtil;  
+    }  
+})  
+
+  .factory('LoginService', function($resource){  
+    return $resource('', {}, {  
+        'login' : {//登录  
+            url : 'sec/login',  
+            method : 'POST',  
+            isArray : false  
+        },  
+        'logout' : {//退出  
+            url : 'sec/logout',  
+            method : 'GET',  
+            isArray : false  
+        },  
+        'changepassword' : {//修改密码  
+            url : 'sec/changepassword',  
+            method : 'POST',  
+            isArray : false  
+        }  
+    });  
+})  
+</script>
+</body>
+</html>

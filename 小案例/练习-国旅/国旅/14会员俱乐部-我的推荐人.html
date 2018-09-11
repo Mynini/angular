@@ -1,0 +1,27 @@
+
+		
+		<ion-nav-view>
+			<ion-view>
+				<div class="bar bar-header">
+					<button class="button back-button  button-icon ion-ios-arrow-left " ng-click="goPersonal('vipClub8')"></button>
+					<button class="button   ion-android-share-alt" ></button>
+		  	   	</div>
+		  	   	<ion-content class="content_head sy_push">
+
+	  	   			<form name="form" novalidate>
+	  	   				<p class="sy_push_1">欢迎使用国旅APP <br /><i>感谢您的支持</i></p>
+		  	   			<div class="sy_push_img"><img src="images/feitu_1.png" alt="" /></div>
+			  	   		<div class="sy_push_2 cl">
+			  	   			<span>请输入推荐人编号</span>
+			  	   			<input type="text"  name="number" ng-model="user.number" ng-model-options="{updateOn: 'blur'}" ng-pattern= '/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,11}$/' maxlength="11" required />
+			  	   			
+			  	   			<div class="input_intro input_top" ng-show="form.number.$invalid">
+		    					<span ng-show="form.number.$error.pattern">请输入正确卡号</span>
+		    				</div>
+			  	   		</div>
+			  	   		
+			  	   		<button class="sy_push_btn" ng-disabled="form.$invalid||!form.number">点击提交</button>
+	  	   			</form>
+		  	   	</ion-content>
+			</ion-view>
+		</ion-nav-view>

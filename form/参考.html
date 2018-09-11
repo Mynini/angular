@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>angular</title>
+    <script type="text/javascript" src="http://s.zys.me/js/jq/jquery.js"></script>
+    <script type="text/javascript" src="http://s.zys.me/js/ng/angular.js"></script>
+    <style>
+        input.ng-invalid {
+            border: 1px solid red;
+        }
+        input.ng-valid {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+<form name="test_form"  ng-controller="TestCtrl">
+    输入长度5-15的内容:
+    <input type="text" name="a" required ng-model="a" ng-minlength=5 ng-maxlength=15 />
+    <span ng-click="see()">{{ test_form.$valid }}</span>
+</form>
+<script type="text/javascript">
+    angular.module('app', [], angular.noop)
+            .controller('TestCtrl', function($scope){
+                $scope.see = function(){
+                    console.log($scope.test_form);
+                    console.log($scope.test_form.a);
+                };
+            });
+    angular.bootstrap(document.documentElement, ['app']);
+</script>
+</body>
+</html>
+
+<!--form 的相关方法要生效，必须为 form 标签指定 name 和 ng-controller,并且每个控件都要绑定一个变量。-->
+<!--form 和控件的名字，即是 $scope 中的相关实例的引用变量名。-->
+
+<!--form 对象的属性有：-->
+<!--$pristine 表单是否未被动过-->
+<!--$dirty 表单是否被动过-->
+<!--$valid 表单是否验证通过-->
+<!--$invalid 表单是否验证失败-->
+<!--$error 表单的验证错误( key是失败信息,像required,minlength…… value是对应的字段实例列表。这里的失败信息是按序列取的一个)-->
+
+<!--除去对象的方法与属性， form 这个标签本身有一些动态类可以使用：-->
+<!--ng-valid 当表单验证通过时的设置-->
+<!--ng-invalid 当表单验证失败时的设置-->
+<!--ng-pristine 表单的未被动之前拥有-->
+<!--ng-dirty 表单被动过之后拥有-->

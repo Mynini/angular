@@ -1,0 +1,56 @@
+
+		<ion-nav-view>
+		<ion-view>
+			<div class="bar bar-header sy_edit">
+				<button class="button back-button button-icon ion-android-arrow-back" ng-click="myGoBack()"></button>
+				<h4>修改呢称</h4>
+		    </div>
+		    <form name="form" novalidate>
+		    	<ion-content class="content_head sy_bg_gray">
+			    	<div class="list sy_invoice_1 list_left_right">
+			    		<div class="item item-input item-select">
+				    		<div class="input-label color_000">
+				              	新增发票
+				            </div>
+				            <select ng-init="data.choice_invoice = '个人'" ng-model="data.choice_invoice">
+				              <option>个人</option>
+				              <option>公司</option>
+				            </select>
+				    	</div>
+				    	<label class="item item-input">
+							    <span class="input-label color_000 wh_108">发票抬头</span>
+							    <div ng-if="data.choice_invoice=='个人'">
+							    	<input type="text"  ng-model-options="{updateOn: 'blur'}" placeholder="请输入个人姓名" ng-model="personal" name="personal" maxlength="15" ng-pattern="/^([\u4E00-\u9FA5]+|[a-zA-Z]+){2,10}$/" required="">
+							    	<div class="input_intro_1" ng-show="form.personal.$invalid">
+								    	<span ng-show="form.personal.$error.pattern">请输入汉字或英文,最少2位</span>
+								    </div>
+							    </div>
+							    <div ng-if="data.choice_invoice=='公司'">
+							    	<input type="text"  ng-model-options="{updateOn: 'blur'}" placeholder="请填写公司名称" ng-model="company" name="company" maxlength="30" ng-pattern="/^([\u4E00-\u9FA5]+|[a-zA-Z]+){2,10}$/" required="" >
+							    	<div class="input_intro_1" ng-show="form.company.$invalid">
+								    	<span ng-show="form.company.$error.pattern">请输入汉字或英文,最少2位</span>
+								    </div>
+							    </div>
+						</label>
+				    	<label ng-show="data.choice_invoice=='公司'" class="item item-input">
+							    <span class="input-label color_000 wh_108">纳税人识别号</span>
+							    <input type="text" ng-model="taxpayerN" name="taxpayerN" ng-pattern="/^[A-Za-z0-9]{15,18}$/" ng-model-options="{updateOn: 'blur'}"  maxlength="18" minlength="15" required="">
+							    
+							    <div class="input_intro" ng-show="form.taxpayerN.$invalid">
+							    	<span ng-show="form.taxpayerN.$error.pattern">请输入正确纳税人识别号</span>
+							    </div>
+						</label>
+			    	</div>
+			    	
+			    </ion-content>
+			    
+			    <div  ng-show="data.choice_invoice=='个人'" class="bar bar-footer sirenzhingzhidi">    
+			    	<button  class="button button_ff88  jihuodi" ng-disabled="form.$invalid || form.personal.$invalid">保存</button>
+			    </div>
+			    <div  ng-show="data.choice_invoice=='公司'" class="bar bar-footer sirenzhingzhidi">    
+			    	<button ng-show="data.choice_invoice=='公司'" class="button button_ff88  jihuodi" ng-disabled="form.$invalid || form.company.$invalid || form.taxpayerN.$invalid">保存</button>
+			    </div>
+		    </form>
+		    
+		</ion-view>
+	</ion-nav-view>

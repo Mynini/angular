@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html ng-app="cits" ng-controller="citsCtrl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<meta name="format-detection" content="telephone=no">
+<title>国旅在线</title>
+
+<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style/css.css" />
+<script src="angularJs/App.js"></script>
+<script src="js/templates.js"></script>
+</head>
+
+<body>
+<ion-side-menus>
+	<!-- 中心内容 -->
+	<ion-side-menu-content>
+		<ion-header-bar class="bar-dark">
+			<button class="button button-icon" ng-click="toggleProjects()"><i class="icon ion-navicon"></i></button>
+			<h1 class="title">测试</h1>
+		</ion-header-bar>
+		<ion-content scroll="false">
+			<ion-nav-view>
+				
+
+				
+				
+				
+				
+			</ion-nav-view>
+		</ion-content>
+	</ion-side-menu-content>
+
+	<!-- 左边栏 -->
+	<ion-side-menu side="left">
+		<ion-header-bar class="bar-dark">
+			<h1 class="title">导航</h1>
+			<button class="button button-icon ion-android-cart" ng-click="newProject()"></button>
+		</ion-header-bar>
+		<ion-content scroll="false">
+			<ion-list>
+				<ion-item ng-repeat="project in nav" ui-sref="{{project.url}}" ng-click="selectProject(project, $index)" serf="project.url" ng-class="{active: activeProject == project}" class="nva_li">
+
+				{{project.name}}
+				</ion-item>
+			</ion-list>
+			<div class="se_top"><div class="search_box"><b></b><input type="text"  class="search" placeholder="搜索感兴趣的课程..."><input type="submit" class="submit" value="搜索"></div></div>
+			<div class="lore">
+				<a href="" class="go_login">登录</a>
+				<a href="" class="go_register">注册</a>
+				<div class="clear"></div>
+			</div>			
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>
+	
+		
+</body>
+</html>

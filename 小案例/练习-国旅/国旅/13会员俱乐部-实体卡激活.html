@@ -1,0 +1,36 @@
+
+		
+		<ion-nav-view>
+			<ion-view>
+				<div class="bar bar-header">
+					<button class="button back-button  button-icon ion-ios-arrow-left " ng-click="goPersonal('vipClub8')"></button>
+					<h4>积分密码设置</h4>
+		  	   	</div>
+		  	   	<ion-content class="content_head">
+		  	   		<form name="form" novalidate >
+  	   			  	   		<div class="denglu-1" >
+  	   				    		<label>
+  	   				    			<div class="denglu-1-1">
+  	   				    				<span class="denglu-1-1-span">卡号</span>
+  	   				    				<input type="text" ng-model="user.cCard" name="cCard" ng-model-options="{updateOn: 'blur'}" ng-pattern= '/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,11}$/'  placeholder="请输入卡号" maxlength="11" required=""> 
+  	   				    				<div class="input_intro_1" ng-show="form.cCard.$invalid">
+  	   				    					<span ng-show="form.cCard.$error.pattern">请输入正确卡号</span>
+  	   				    				</div>
+  	   				    			</div>
+  	   				    		</label><!-- ngIf: !validate -->
+  	   				    		<label>
+  	   				    			<div class="denglu-1-1">
+  	   				    				<span class="denglu-1-1-span">密码</span>
+  	   				    				<input type="password" ng-model="user.cCard_integral" ng-model-options="{updateOn: 'blur'}" name="cCard_integral" ng-pattern= '/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,11}$/' placeholder="请输入积分密码" maxlength="11" required=""> 
+
+  	   				    				<div class="input_intro_1" ng-show="form.cCard_integral.$invalid">
+  	   				    					<span ng-show="form.cCard_integral.$error.pattern">请输入正确密码</span>
+  	   				    				</div>
+  	   				    			</div>
+  	   				    		</label><!-- ngIf: !validate -->	    		
+  	   				    	</div>
+  	   				    	<button class='button_orange button denglu-2-1 button_39' ng-disabled="form.$invalid || form.integral.$invalid || form.cCard.$invalid">确认</button>
+		  	   		</form>
+		  	   	</ion-content>
+			</ion-view>
+		</ion-nav-view>

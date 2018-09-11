@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!--<script src="http://lib.baomitu.com/angular.js/1.6.4/angular.min.js"></script>
+    <script src="http://lib.baomitu.com/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>-->
+    <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+</head>
+<body ng-app="myApp">
+<a ui-sref="u2">到u2</a> <br />
+<a ui-sref="u2.child">到页面u2.child</a>
+<div ui-view></div>
+
+
+
+
+<script>
+	app=angular.module("myApp",["ionic"]);
+	app.config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){
+
+		$stateProvider
+		.state("index",{
+			url:"/index",
+			templateUrl:"ui-1.html"
+		})
+		.state("u2",{
+			url:"/u2",
+			templateUrl:"ui-2.html"
+		})
+		.state("u2.child",{
+			url:"/u2child",
+			templateUrl:"ui-2-child.html"
+		});
+		$urlRouterProvider.otherwise('index');
+		
+	}])
+</script>
+
+
+<script type="text/ng-template" id="ui-1.html">
+	<a href="">这是ui页面</a><br /><br /><br />
+</script> <!-- 这个是一个主页面 下面是它的子页面 -->
+
+
+<script type="text/ng-template" id="ui-2.html">
+	<a href="">这是u2页面</a>
+	<div ui-view></div>
+</script> <!-- 这个是个主页面 下面是它的嵌套 -->
+<script type="text/ng-template" id="ui-2-child.html">
+	<a href="">这是u2-child页面</a>
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>菜鸟教程(runoob.com)</title>
+        <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+    </head>
+    <body ng-app="todo" ng-controller="TodoCtrl">
+    <ion-side-menus>
+
+    <!-- 中心内容 -->
+    <ion-side-menu-content>
+      <ion-header-bar class="bar-dark">
+        <button class="button button-icon" ng-click="toggleProjects()">
+          <i class="icon ion-navicon"></i>
+        </button>
+        <h1 class="title">{{activeProject.title}}</h1>
+        <!-- 新增按钮 -->
+        <button class="button button-icon" ng-click="newTask()">
+          <i class="icon ion-compose"></i>
+        </button>
+      </ion-header-bar>
+      <ion-content scroll="false">
+        <ion-list>
+          <ion-item ng-repeat="task in activeProject.tasks">
+            {{task.title}}
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu-content>
+
+    <!-- 左边栏 -->
+    <ion-side-menu side="left">
+    <ion-header-bar class="bar-dark">
+      <h1 class="title">Projects</h1>
+      <button class="button button-icon ion-plus" ng-click="newProject()">
+      </button>
+    </ion-header-bar>
+    <ion-content scroll="false">
+      <ion-list>
+        <ion-item ng-repeat="project in projects" ng-click="selectProject(project, $index)" ng-class="{active: activeProject == project}">
+          {{project.title}}
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    </ion-side-menu>
+
+    </ion-side-menus>
+
+    <!--  新增页面 -->
+    <script id="new-task.html" type="text/ng-template">
+
+      <div class="modal">
+
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+          <h1 class="title">New Task</h1>
+          <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+        </ion-header-bar>
+
+        <!-- Modal content area -->
+        <ion-content>
+
+          <form ng-submit="createTask(task)">
+            <div class="list">
+              <label class="item item-input">
+                <input type="text" placeholder="What do you need to do?" ng-model="task.title">
+              </label>
+            </div>
+            <div class="padding">
+              <button type="submit" class="button button-block button-positive">Create Task</button>
+            </div>
+          </form>
+
+        </ion-content>
+
+      </div>
+	  
+
+    </script>
+    <script>
+		//注释：初始化angular，传入ionic，projects为内容数据数组，lastActiveProject为最新当前项索引
+		angular.module('todo', ['ionic'])
+		/**
+		 * The Projects factory handles saving and loading projects
+		 * from local storage, and also lets us save and load the
+		 * last active project index.
+		 */
+		.factory('Projects', function() {	//自定义Projects服务，Projects.all获取返回缓存数据，Projects.save存储最新数据到缓存
+		  return {
+			all: function() {	//获取缓存projects（内容数据数组），如果projects有值，则返回反序列化后的Json，否则返回[]
+			  var projectString = window.localStorage['projects'];
+				console.log(projectString)
+			  if(projectString) {
+				return angular.fromJson(projectString);
+			  }
+			  return [];
+			},
+			save: function(projects) {	//存储传值（序列化）到缓存projects（内容数据数组）
+			  window.localStorage['projects'] = angular.toJson(projects);
+			},
+			newProject: function(projectTitle) {	//根据传值返回新项目对象
+			  // Add a new project
+			  return {
+				title: projectTitle,
+				tasks: []
+			  };
+			},
+			getLastActiveIndex: function() {	//获取缓存lastActiveProject（最新当前项索引），如果lastActiveProject有值，则返回lastActiveProject，否则返回0
+			  return parseInt(window.localStorage['lastActiveProject']) || 0;
+			},
+			setLastActiveIndex: function(index) {		//存储传值到缓存lastActiveProject（最新当前项索引）
+			  window.localStorage['lastActiveProject'] = index;
+			}
+		  }
+		})
+
+		.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {		//创建控制器，传入Projects服务，$ionicSideMenuDelegate侧边栏
+			// $scope.projects 数据数组
+			// $scope.activeProject 当前项
+			
+		  // A utility function for creating a new project
+		  // with the given projectTitle
+		  var createProject = function(projectTitle) {	//定义函数，用于创建新的内容数据项
+			var newProject = Projects.newProject(projectTitle);		//根据传值projectTitle，返回新项目对象
+			$scope.projects.push(newProject);	//将新项目对象添加到数据数组$scope.projects
+			Projects.save($scope.projects);	//将新数组，存储到缓存
+			$scope.selectProject(newProject, $scope.projects.length-1);		//选择新项目对象，为当前项
+		  }
+
+		  // Load or initialize projects
+		  $scope.projects = Projects.all();	//获取缓存projects数据，初始化数据数组
+
+		  // Grab the last active, or the first project
+		  $scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];	//获取缓存lastActiveProject，定义当前项，为数据数组中的第lastActiveProject个
+
+		  // Called to create a new project
+		  $scope.newProject = function() {	//创建一个新的项目对象
+			var projectTitle = prompt('Project name');	//弹出提示输入框
+			if(projectTitle) {
+			  createProject(projectTitle);	//如果输入结果projectTitle不为空，则调用函数createProject，用于创建新的项目
+			}
+		  };
+
+		  // Called to select the given project
+		  $scope.selectProject = function(project, index) {	//根据传入对象及索引，更显当前项
+			$scope.activeProject = project;	//将新项目对象，存入当前项$scope.activeProject
+			Projects.setLastActiveIndex(index);	//将新项目索引，存入缓存lastActiveProject
+			$ionicSideMenuDelegate.toggleLeft(false);	//关闭侧边栏
+		  };
+
+		  // Create our modal
+		  $ionicModal.fromTemplateUrl('new-task.html', function(modal) {	//定义ionic模态窗口，$scope.taskModal为指向变量，用于添加二级列表内容
+			$scope.taskModal = modal;
+		  }, {
+			scope: $scope
+		  });
+
+		  $scope.createTask = function(task) {	//模态窗口提交，添加新数据
+			if(!$scope.activeProject || !task) {	//如果输入框没有内容，或者当前项没有值，则无法提交
+			  return;
+			}
+			$scope.activeProject.tasks.push({	//更新当前项的二级列表内容为新添加的数据
+			  title: task.title
+			});
+			$scope.taskModal.hide();	//关闭模态窗口
+			  
+			  console.log(1)
+			  console.log($scope.activeProject)
+			  console.log($scope.projects)
+			  console.log(2)
+			  
+			// Inefficient, but save all the projects
+			Projects.save($scope.projects);		//存储全部数据
+
+			task.title = "";
+		  };
+
+		  $scope.newTask = function() {
+			$scope.taskModal.show();	//打开模态窗口
+		  };
+
+		  $scope.closeNewTask = function() {
+			$scope.taskModal.hide();	//关闭模态窗口
+		  }
+
+		  $scope.toggleProjects = function() {
+			$ionicSideMenuDelegate.toggleLeft();	//切换左侧导航状态
+		  };
+
+
+		  // Try to create the first project, make sure to defer
+		  // this by using $timeout so everything is initialized
+		  // properly
+			//初始化，如果没有初始值，则开始进行弹窗输入初始值
+		  $timeout(function() {
+			if($scope.projects.length == 0) {
+			  while(true) {
+				var projectTitle = prompt('Your first project title:');
+				if(projectTitle) {
+				  createProject(projectTitle);
+				  break;
+				}
+			  }
+			}
+		  });
+
+		});
+
+		
+	</script>
+    <script src="cordova.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+	
+	<ion-nav-view>
+		<ion-view>
+			<div class="bar bar-header" id="soutou">
+				<button class="button back-button buttons button-icon ion-ios-arrow-left dingdan header-item homeDfanhui" state-name="mine" ng-click="goPersonal('vip')"></button>
+				<h4>我发布的</h4>
+				<button class="button button-icon ion-ios-box-outline dingdan touer1" ></button>
+				<button class="button button-icon ion-ios-plus-empty dingdan touer" >
+				<i class=""></i>
+			</div>
+			<div class="bar-subheader" id="homeDbar">
+				<div class="ai_nav">
+					<a class="hover" nav-transition="none" ui-sref="travel"><em></em>旅行圈</a>
+					<a class=""  nav-transition="none" ui-sref="travel2"><em></em>游记</a>
+				</div>
+			</div>
+
+	    	<ion-content class="has-subheader sy_bg_gray">
+	    		
+	    		<!--无发布消息时显示的页面-->
+	    		<!--<div class="travel_none">
+	    			<div class="travel_none_1"><img src="images/travel_non_img1.jpg" class="none_img" alt="" /></div>
+	    			<p class="travel_none_p">暂无旅行圈信息</p>
+	    		</div>-->
+	    		
+	    		<div class="ai_lvq_nr"  ng-style="index===(getGroupEssayList.resultInfoLs.length-1)?{'padding-bottom':'0px'}:''">
+	    			<div class="ai_lvq_list">
+	    				<dl class="ai_lvq_txArea clearfix" ng-click="gotoDetail(lxq.essay_id)">
+	    					<dt>
+	    						<img image-lazy-src="http://file3.cits.cn/originalPhoto/20170608/20170608114524_641.jpg" height="35" width="35" alt="" image-lazy-loader="http://file1.cits.cn/ionic/img/load/person.jpg" style="border-radius: 4px" src="http://file3.cits.cn/originalPhoto/20170608/20170608114524_641.jpg">
+	    					</dt>
+	    					<dd>
+	    						<h4 class="ng-binding">151**81</h4>
+	    						<p  class="ng-binding">贵州
+	    							<empty ng-transclude="">&nbsp;&nbsp;</empty>
+	    	                        <span style="display: inline-block" class="ng-binding">2017-12-11</span>
+	    						</p>
+	    					</dd>
+	    				</dl>
+	    				<div class="ai_lvq_wzArea">
+	    					<a href="#travel/circle/39249" style="color: #202020"  class="ng-binding">晴隆二十四道拐抗战公路，是“史迪威公路”的形象标识，人类不屈不挠的抗日精神。古称“鸦关”，雄、奇、险...</a> 
+	    					<a href="#travel/circle/39249" ng-bind="'查看全文'" class="ng-binding">查看全文</a>
+	    				</div>
+	    				<ul class="ai_lvq_tpArea clearfix">
+	    					<li image-lazy-src="http://file.cits.cn/tripnote/20171212/20171212103904_481_s.jpg"  image-lazy-background-image="true" image-lazy-loader="http://file1.cits.cn/ionic/img/load/load100.png" image-lazy-error="img/load/error100.png" style="background-image: url(&quot;http://file.cits.cn/tripnote/20171212/20171212103904_481_s.jpg&quot;);"></li>
+	    					<li image-lazy-src="http://file1.cits.cn/tripnote/20171212/20171212103907_363_s.jpg"  image-lazy-background-image="true" image-lazy-loader="http://file1.cits.cn/ionic/img/load/load100.png" image-lazy-error="img/load/error100.png" style="background-image: url(&quot;http://file1.cits.cn/tripnote/20171212/20171212103907_363_s.jpg&quot;);"></li>
+	    					<li image-lazy-src="http://file5.cits.cn/tripnote/20171212/20171212103907_730_s.jpg"   image-lazy-background-image="true" image-lazy-loader="http://file1.cits.cn/ionic/img/load/load100.png" image-lazy-error="img/load/error100.png" style="background-image: url(&quot;http://file5.cits.cn/tripnote/20171212/20171212103907_730_s.jpg&quot;);"></li>
+	    					<li image-lazy-src="http://file2.cits.cn/tripnote/20171212/20171212103907_941_s.jpg"   image-lazy-background-image="true" image-lazy-loader="http://file1.cits.cn/ionic/img/load/load100.png" image-lazy-error="img/load/error100.png" style="background-image: url(&quot;http://file2.cits.cn/tripnote/20171212/20171212103907_941_s.jpg&quot;);"></li>
+	    				</ul>
+	    			</div>
+	    			<show-review id="39249" channels="travel_circle_index_tologin" param="">
+	    				<div class="ai_lvq_plArea">
+	    					<div ng-if="lxq.status==='4'">
+	    						<div class="ai_lvq_plTit clearfix">
+	    							<a class="icon_z ai_zBtn ng-binding" myattr="true"  ng-style="lxq.hasCollect?{'background-image': 'url(http://file1.cits.cn/ionic/img/aiyj_icon01_hover1.jpg)'}:''">0</a>
+	    							<a class="icon_x ng-binding">0</a>
+	    						</div>
+	    					</div>
+	    					</div>
+	    			</show-review>
+	    		</div>
+	    		
+
+		    </ion-content>
+		</ion-view>
+	</ion-nav-view>
+

@@ -1,0 +1,50 @@
+
+		
+		<ion-nav-view>
+			<ion-view>
+				<div class="bar bar-header">
+					<button class="button back-button  button-icon ion-ios-arrow-left"   ng-click="goPersonal('personal4');" ></button>
+					<h4>密码设置</h4> 
+		  	    </div>
+			    <form name="form" novalidate>
+	    		    <ion-content class="content_head">
+	    		    	<div class="row cdfg-security-sign">
+	    		    		<div class="cdfg-security-col">1<div class="text">验证身份</div></div>
+	    		    		<div class="col cdfg-padding cdfg-security-arrow"><i class="ion-ios-arrow-right"></i></div>
+	    	    			<div class="cdfg-security-col  cdfg-password-active">2<div class="text">填写密码</div></div>
+	    	    			<div class="col cdfg-padding cdfg-security-arrow"><i class="ion-ios-arrow-right"></i></div>
+	    	    			<div class="cdfg-security-col ">3<div class="text">完成</div></div>
+	    		    	</div>
+	    		    	<div class="denglu-1" >
+	    		    		<label>
+	    		    			<div class="denglu-1-1">
+	    		    				<input type="password" ng-model="user.password" ng-pattern= '/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/' ng-model-options="{updateOn: 'blur'}" placeholder="请输入密码6-20位"  maxlength="20" name="password" required>
+
+	    		    				<div class="input_intro_1" ng-show="form.password.$invalid">
+	    		    					<span ng-show="form.password.$error.pattern">请输入6-20位密码,字母加数字组合</span>
+	    		    				</div>
+	    		    			</div>
+	    		    		</label><!-- ngIf: !validate -->
+	    		    	</div>
+	    		    	<div class="denglu-1" >
+	    		    		<label>
+	    		    			<div class="denglu-1-1">
+	    		    				<input type="password" ng-model="user.repassword"  placeholder="请再次输入密码" ng-model-options="{updateOn: 'blur'}" name="repassword" ng-bind="btn_repassword"   required>
+	    		    				<div ng-bind="b"></div>
+	    		    				<div class="input_intro_1" ng-show="form.password.$valid">
+	    		    					<span  ng-show="user.repassword != user.password">*两次密码输入不一致</span>
+	    		    				</div>
+	    		    			</div>
+	    		    		</label><!-- ngIf: !validate -->
+	    		    	</div>
+
+
+	    		    </ion-content>
+	    		    <div class="bar bar-footer cits-form-button ordersucdi">
+	    		    	<button class="ordersucdi-1" ng-click="goPersonal('personal2');">取消</button>
+	    		    	<button class="button button-assertive ordersucdi-2 ng-binding"   ng-click="goPersonal('personal6');"  ng-disabled="form.$invalid || form.password.$invalid || user.repassword !=user.password" >下一步</button> 
+	    		    </div>
+
+			    </form>
+			</ion-view>
+		</ion-nav-view>

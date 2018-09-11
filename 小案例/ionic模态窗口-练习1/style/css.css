@@ -1,0 +1,31 @@
+﻿body {font:12px "Arial";}
+html,body{-webkit-text-size-adjust:none;}
+body,form,input,p,ul,li,h1,h2,h3,h4,h5,h6,table,th,td{padding:0;margin:0;}
+ul,li{list-style:none;}
+img {border:0;}
+a{text-decoration:none;}
+.clear{ clear:both; width:100%; overflow:hidden; height:0; }
+
+/*--PC--*/
+
+/*--ipad横--*/
+@media screen and (max-width:1200px){/*--1200-1024--*/
+	
+}
+
+/*--ipad竖--*/
+@media screen and (max-width:1002px){/*--1024-768--*/
+	
+}
+
+/*--手机横--*/
+@media screen and (max-width:758px){/*--768-0--*/
+	
+}
+/*--手机竖--*/
+@media screen and (max-width:470px){/*--768-0--*/
+	
+}
+
+
+a:hover{ color:#f60;}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+</head>
+<body ng-app="todo" ng-controller="todoCtrl">
+ <ion-header-bar class="bar bar-positive">
+ 	<h1 class="title">radio</h1>
+ </ion-header-bar>	
+ <ion-content>
+ 	<div class="list"> 
+ 		<div class="item item-divider">选取的值为: {{ data.clientSide }}</div>
+ 		<ion-radio ng-repeat="item in items" ng-value="item.value" ng-model="data.clientSide" >{{item.name}}</ion-radio>
+
+ 		<div class="item item-divider">Serverside, Selected Value: {{ data.serverSide }}</div>
+ 		<ion-radio ng-repeat="item2 in items2" ng-value="item2.value" ng-model="data.serverSide" ng-change="serverSideChange(item2)" name="server-side"> {{ item2.name }}</ion-radio>
+ 	</div>		
+ </ion-content>
+	
+
+
+<script>
+	var app=angular.module("todo",["ionic"]);
+	app.controller("todoCtrl",["$scope",function($scope){
+		$scope.items=[
+		{name:"item1",value:"go"},
+		{name:"item2",value:"to"},
+		{name:"item3",value:"bed"}
+		];
+
+		$scope.items2=[
+		{name:"item1",value:"go"},
+		{name:"item2",value:"to"},
+		{name:"item3",value:"bed"}
+		];
+
+		$scope.data = {
+        clientSide: 'ng'
+      };
+      // $scope.data = {
+      //   serverSide: 'rb'
+      // };
+      $scope.serverSideChange = function(item) {
+        console.log("Selected Serverside, name:", item.name, "value:", item.value);
+      };
+
+
+	}]);
+</script>
+</body>
+</html>

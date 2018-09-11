@@ -1,0 +1,23 @@
+
+		
+	<ion-nav-view>
+			<ion-view>
+				<div class="bar bar-header sy_edit">
+					<button class="button back-button button-icon ion-android-arrow-back " ng-click="goPersonal('personal2');"></button>
+					<h4>修改身份证</h4>
+			    </div>
+			    <ion-content class="content_head  sy_bg_gray sy_edit_cont1">
+			    	<form name="form" novalidate>
+			    		<div class="sy_edit_1">
+					    	<label class="item item-input">
+						       <input type="text" placeholder="请输入您的身份证" name="card" maxlength="18" ng-model="user.card" ng-model-options="{updateOn: 'blur'}" ng-pattern="/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|[xX])$/"  required>
+						    </label>
+						    <div class="input_intro_1" ng-show="form.card.$invalid">
+							    	<span ng-show="form.card.$error.pattern">身份证输入错误</span>
+							</div>
+				        </div>
+				        <button class='button_orange button denglu-2-1 button_t_11' ng-disabled="form1.$invalid || form.card.$invalid">保存</button>
+			    	</form>
+			    </ion-content>
+			</ion-view>
+		</ion-nav-view>

@@ -1,0 +1,48 @@
+
+		
+		<ion-nav-view>
+			<ion-view>
+				<div class="bar bar-header">
+					<button class="button back-button  button-icon ion-ios-arrow-left" ng-click="goPersonal('vipClub8')"></button>
+					<h4>积分密码设置</h4>
+		  	   	</div>
+		  	   	<ion-content class="content_head">
+		  	   		<form name="form" novalidate>
+		  	   			<div class="denglu-1">
+			    		<label>
+			    			<div class="denglu-1-1">
+			    				<span class="denglu-1-1-span  denglu-1-1-spanAuto">设置密码：</span>
+			    				<input type="password" ng-model="user.integral" name="integral" ng-model-options="{updateOn: 'blur'}" ng-pattern= '/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/' placeholder="请设置积分使用密码" maxlength="20" required> 
+			    				
+		    					<div class="input_intro_1" ng-show="form.integral.$invalid">
+    		    					<span ng-show="form.integral.$error.pattern">请输入6-20位密码,字母加数字组合</span>
+    		    				</div>
+			    			</div>
+			    		</label>
+			    		<label>
+			    			<div class="denglu-1-1">
+			    				<span class="denglu-1-1-span denglu-1-1-spanAuto">确认密码：</span>
+			    				<input type="password" ng-model="user.reIntegral" name="reIntegral" ng-model-options="{updateOn: 'blur'}"  required> 
+
+			    				<div class="input_intro_1" ng-show="form.integral.$valid">
+    		    					<span ng-show="reIntegral != integral">*两次密码输入不一致</span>
+    		    			</div>
+			    			</div>
+			    		</label>
+			    		<label>
+			    			<div class="denglu-1-1">
+			    				<span class="denglu-1-1-span denglu-1-1-spanAuto">会员登录密码：</span>
+			    				<input type="password" ng-model="user.password"  name="password" placeholder="请输入您的会员登录密码"  ng-model-options="{updateOn: 'blur'}" maxlength="20" ng-pattern= '/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/' required> 
+
+			    				<div class="input_intro_1" ng-show="form.password.$invalid">
+	    		    					<span  ng-show="form.password.$error.pattern">请输入正确密码</span>
+	    		    			</div>	
+			    			</div>
+			    		</label><!-- ngIf: !validate -->
+
+			    	</div>
+			    	<button class='button_orange button denglu-2-1 button_39' ng-disabled="form.$invalid || form.password.$invalid ||integral!=reIntegral">确认</button>
+		  	   		</form>
+		  	   	</ion-content>
+			</ion-view>
+		</ion-nav-view>

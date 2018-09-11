@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="format-detection" content="telephone=no">
+	    <title>国旅在线</title>
+		<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+	    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+	    
+	    <link rel="stylesheet" href="../css/style.min.css" />
+		<link rel="stylesheet" href="../css/sy.css" />
+		<script src="../js/myApp.js"></script>
+	</head>
+	<body>
+		
+		<ion-nav-view>
+			<ion-view>
+				<div class="bar bar-header">
+					<button class="button back-button  button-icon ion-ios-arrow-left " ng-click="goPersonal('vipClub8')"></button>
+					<button class="button   ion-android-share-alt" ></button>
+		  	   	</div>
+		  	   	<ion-content class="content_head sy_push">
+
+	  	   			<form name="form" novalidate>
+	  	   				<p class="sy_push_1">欢迎使用国旅APP <br /><i>感谢您的支持</i></p>
+		  	   			<div class="sy_push_img"><img src="images/feitu_1.png" alt="" /></div>
+			  	   		<div class="sy_push_2 cl">
+			  	   			<span>请输入推荐人编号</span>
+			  	   			<input type="text"  name="number" ng-model="user.number" ng-pattern= '/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,11}$/' maxlength="11" />
+			  	   			
+			  	   			<div class="input_intro" ng-show="form.number.$invalid">
+		    					<span ng-show="form.number.$error.pattern">请输入正确卡号</span>
+		    				</div>
+			  	   		</div>
+			  	   		<input type="button" class="sy_push_btn" ng-disabled="form.$invalid ||form.number.$invalid" value="点击提交">
+	  	   			</form>
+		  	   	</ion-content>
+			</ion-view>
+		</ion-nav-view>
+	</body>
+</html>

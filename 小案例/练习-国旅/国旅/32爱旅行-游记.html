@@ -1,0 +1,55 @@
+
+	<ion-nav-view>
+		<ion-view>
+			<div class="bar bar-header" id="soutou">
+				<button class="button back-button buttons button-icon ion-ios-arrow-left dingdan header-item homeDfanhui" state-name="mine" ng-click="myGoBack()"></button>
+				<h4>我发布的</h4>
+				<button class="button button-icon ion-ios-box-outline dingdan touer1" ></button>
+				<button class="button button-icon ion-ios-plus-empty dingdan touer" >
+				<i class=""></i>
+			</div>
+			<div class="bar-subheader" id="homeDbar">
+				<div class="ai_nav">
+					<a class="" nav-transition="none" ui-sref="travel"><em></em>旅行圈</a>
+					<a class="hover"  nav-transition="none" ui-sref="travel2"><em></em>游记</a>
+				</div>
+			</div>
+
+	    	<ion-content class="has-subheader sy_bg_gray">
+	    		
+	    		<!--无发游记时显示的页面-->
+	    		<!--<div class="travel_none">
+	    			<div class="travel_none_1"><img src="images/travel_non_img1.jpg" class="none_img" alt="" /></div>
+	    			<p class="travel_none_p">暂无旅行圈信息</p>
+	    		</div>-->
+	    		<ul class="ai_yj_nr" >
+		    		<li>
+		    			<div class="ImgArea" image-lazy-background-image="true" image-lazy-src="http://file4.cits.cn/tripnote/20171208/20171208175220_650.jpg" image-lazy-loader="http://file1.cits.cn/ionic/img/load/load169.png" image-lazy-error="img/load/error169.png" lazy-scroll-resize="true" ng-click="goDetail('39136')" style="background-image: url(&quot;http://file4.cits.cn/tripnote/20171208/20171208175220_650.jpg&quot;);">
+		    				
+		    			</div>
+		    			<div class="MsArea">
+		    				<div class="tit">
+		    					<em></em>
+		    					<h4><a href="#" class="">又见曼谷的自在喧嚣</a></h4>
+		    				</div>
+		    				<div class="czArea clearfix">
+		    					<p class="ng-binding">曼谷</p>
+		    					<a class="icon_z ai_zBtn ng-binding"  href="javascript:void(0);">1</a>
+		    					<a class="icon_x ng-binding" href="javascript:void(0);">0</a> 
+		    					<a class="icon_y ng-binding" href="javascript:void(0);">59</a>
+		    				</div>
+		    			</div>
+		    		</li>
+	    		</ul>
+		    </ion-content>
+		    <div class="bar bar-footer travel_look">
+		    	<div class="item travel_look_item">
+		    		<div class="travel_look_img"><img src="images/travel_look.jpg" alt="" class="none_img"/></div>
+		    	    <h3 class="travel_look_tit">爱旅行</h3>
+		    	    <p class="travel_look_p">分享分享分享分,享分享分享分享分享分享分享</p>
+		    	    <button class="travel_look_btn">立即查看</button>
+		    	</div>
+		    	
+		    </div>
+		</ion-view>
+	</ion-nav-view>

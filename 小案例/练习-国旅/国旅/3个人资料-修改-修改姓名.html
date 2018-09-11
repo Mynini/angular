@@ -1,0 +1,26 @@
+
+		
+		<ion-nav-view>
+			<ion-view>
+				<div class="bar bar-header sy_edit">
+					<button class="button back-button button-icon ion-android-arrow-back" ng-click="goPersonal('personal2');" ></button> 
+					<h4>修改姓名</h4>
+			    </div>
+			    <ion-content class="content_head sy_bg_gray sy_edit_cont1">
+			    	<form novalidate name="form">
+			    		<div class="sy_edit_1">
+					    	<label class="item item-input">
+						       <input type="text" placeholder="请输入您的姓名" name="cname" ng-model="user.cname" ng-mixlength="2" ng-model-options="{updateOn: 'blur'}" ng-pattern="/^([\u4E00-\u9FA5]+|[a-zA-Z]+){2,10}$/" required>
+						       
+						       <div class="input_intro_1" ng-show="form.cname.$invalid">
+						    	<span ng-show="form.cname.$error.pattern">请输入正确的姓名</span>
+						       </div>
+						    </label>
+						    
+						    
+				        </div>
+				        <button class='button_orange button denglu-2-1 button_t_11' ng-disabled="form.$invalid || form.cname.$invalid">保存</button>
+			    	</form>
+			    </ion-content>
+			</ion-view>
+		</ion-nav-view>

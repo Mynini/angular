@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <title>国旅在线</title>
+	<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+	<link href="http://file3.cits.cn/m//lib/mobiscroll/css/mobiscroll.custom-3.0.0-beta4.min.css" rel="stylesheet">  <!--日期插件-->
+    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+    <script src="http://file6.cits.cn/m/lib/mobiscroll/js/mobiscroll.custom-3.0.0-beta4.min.js"></script> <!--日期插件-->
+    
+    
+    <!--<link href="http://file1.cits.cn/m/lib/ionic/css/ionic.css?v=1.0.0" rel="stylesheet" type="text/css"/>
+    <script src="http://file4.cits.cn/m/lib/ionic/js/ionic.bundle.min.js"></script>-->
+    
+    
+    <link rel="stylesheet" href="css/style.min.css" />
+	<link rel="stylesheet" href="css/sy.css" />
+	
+	<script src="js/myApp.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/controller.js"></script>
+
+
+
+	
+</head>
+<body ng-controller="myCtrl">
+	
+	<!--<div ui-view></div>-->
+	<ion-nav-view></ion-nav-view>
+
+   
+   <script id="consult_model.html" type="text/ng-template">
+	    	<ion-modal-view class="consult_2_view">
+	    		<ion-content class="consult_1">
+	    			<i class="icon ion-ios-close-outline" ng-click="closeModal()"></i>	
+	    			<div class="img"><img src="images/consult_1.jpg" alt=""  class="none_img"/></div>
+	    			<p class="txt">全国旅游咨询预定热线</p>
+	    			<a href='' class="btn"><span><i class="icon ion-chatbubble-working"></i>在线咨询</span></a>
+	    		</ion-content>
+	    	</ion-modal-view>
+	</script>
+</body>
+</html>
+
+
+
+

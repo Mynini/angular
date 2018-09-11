@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	    <meta name="format-detection" content="telephone=no">
+	    <title>国旅在线</title>
+		<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+	    <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
+	    
+	    <link rel="stylesheet" href="../css/style.min.css" />
+		<link rel="stylesheet" href="../css/sy.css" />
+		<script src="../js/myApp.js"></script>
+	</head>
+	<body>
+		
+		<ion-nav-view>
+			<ion-view>
+				<div class="bar bar-header sy_edit sy_add_adr_head sy_border_clear">
+					<button class="button back-button button-icon ion-android-arrow-back " ng-click="goPersonal('offerMessage21')"></button>
+					<h4>添加旅客</h4>
+					<div class="sy_add_adr_head_1">
+						<i class="img_p" style="background-image:url(images/sy_vip_sp_icon.png)"></i>
+						<span>保存</span>
+					</div>
+			    </div>
+			    <ion-content class="content_head sy_bg_gray sy_add_adr">
+			    	
+			    	<div class="sy_add_adr_1">姓名</div>
+			    	<div class="sy_add_adr_2">
+			    		<label class="item item-input">
+				          <span class="input-label">中文姓</span>
+				          <input type="text" placeholder="请与证件保持一致">
+				        </label>
+				        <label class="item item-input">
+				          <span class="input-label">中文名</span>
+				          <input type="text" placeholder="请与证件保持一致">
+				        </label>
+				        <label class="item item-input">
+				          <span class="input-label">英文姓</span>
+				          <input type="text" placeholder="Last name">
+				        </label>
+				        <label class="item item-input">
+				          <span class="input-label">英文名</span>
+				          <input type="text" placeholder="First name">
+				        </label>
+			    	</div>
+			    	
+			    	<div class="sy_add_adr_1">证件</div>
+			    	<div class="sy_add_adr_3">
+			    		<div class="item item-icon-left item-icon-right">
+				    		<i class="icon ion-minus-circled " ></i>
+				    		<item-content><span>身份证</span><em>152232366582522</em></ion-content>
+				    		<i class="icon ion-ios-arrow-right icon_999 icon_right_2"></i>
+				    	</div>
+			    	</div>
+			    	<div class="sy_add_adr_4"><a><i class="icon ion-android-add"></i>添加证件</a></div>
+			    	
+			    	<div class="sy_add_adr_5">为能顺利出行，请确保旅行结束日期至少比证件有效期早6个月，并确保证件信息的准确！</div>
+			    	<div class="sy_add_adr_1">基本信息</div>
+			    	
+			    	<div class="sy_add_adr_2">
+			    		<label class="item item-input">
+				          <span class="input-label">手机号</span>
+				          <input type="text" placeholder="请填写手机号">
+				        </label>
+				        <label class="item item-input">
+				          <span class="input-label">邮箱</span>
+				          <input type="text" placeholder="请填写邮箱">
+				        </label>
+				        <label class="item item-input item-icon-right">
+				          <span class="input-label">出生日期</span>
+				          <input type="text" placeholder="请选择">
+				          <i class="icon ion-ios-arrow-right icon_999 icon_right_2"></i>
+				        </label>
+				        <label class="item item-input">
+				          <span class="input-label">性别</span>
+						  <div class="sy_radio">
+						  	<ion-radio class="radio"  name="choice_1">男</ion-radio>
+						    <ion-radio class="radio"  name="choice_1">女</ion-radio>
+						  </div>
+				        </label>
+				        <label class="item item-input">
+				          <span class="input-label">乘客类型</span>
+						  <div class="sy_radio">
+							  	<ion-radio class="radio"  name="choice_2">成人</ion-radio>
+							    <ion-radio class="radio"  name="choice_2">儿童</ion-radio>
+						  </div>
+				        </label>
+				        <label class="item item-input item-icon-right">
+				          <span class="input-label">国籍</span>
+				          <input type="text" placeholder="中国">
+				        </label>
+			    	</div>
+			    	
+			    	
+			    	<ul class="list sy_adr_add_6">
+				        <li class="item item-toggle">
+				                                     设置为本人
+				           <label class="toggle toggle-positive toggle_gray">
+				             <input type="checkbox">
+				             <div class="track">
+				               <div class="handle"></div>
+				             </div>
+				           </label>
+				        </li>
+				    </ul>
+				    <div class="sy_zw_64"></div>
+			    </ion-content>
+			    <div class="bar bar-footer sirenzhingzhidi" ><button class="button button_ff88  jihuodi">保存</button></div>
+			</ion-view>
+		</ion-nav-view>	
+	</body>
+</html>

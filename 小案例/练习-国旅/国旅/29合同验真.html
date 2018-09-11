@@ -1,0 +1,40 @@
+
+	
+	<ion-nav-view>
+		<ion-view>
+			<div class="bar bar-header " >
+					<button class="button back-button buttons button-icon ion-ios-arrow-left dingdan header-item homeDfanhui" ng-click="goPersonal('vip')"></button>
+					<h4 class="sy_int_title">合用验真</h4>
+			</div>
+
+	    	<ion-content class="content_head sy_bg_gray">
+	    		<form name="form" novalidate>
+	    			<div class="sy_combine">
+		    			<h3 class="combine_tit">国旅旅游合同验真</h3>
+		    			
+		    			<div class="combine_input"><input type="text" placeholder="请输入E开头的电子合同编号" ng-model="combine" name="combine" ng-model-options="{updateOn: 'blur'}" ng-pattern= '/^[E]{1}([a-zA-Z0-9]){4,19}$/' ng-model-options="{updateOn: 'blur'}"  required></div>
+		    			<div class="input_intro" ng-show="form.combine.$invalid">
+		    			     	<span ng-show="form.combine.$error.pattern">请输入正确验证码</span>
+				    	</div>
+				    	
+		    			<div class="combine_input"><input type="text" placeholder="请输入签约人手机号" ng-model-options="{updateOn: 'blur'}" ng-model="combine_phone" name="combine_phone" ng-model-options="{updateOn: 'blur'}" ng-pattern="/^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(14[0-9]{1}))+\d{8})$/"  required></div>
+		    			<div class="input_intro" ng-show="form.combine_phone.$invalid">
+		    			     	<span ng-show="form.combine_phone.$error.pattern">请输入正确手机号</span>
+				    	</div>
+				    	
+		    			<div class="combine_yz cl">
+		    				<div class="conbine_input_sh"><input type="text" placeholder="验证码" ng-model-options="{updateOn: 'blur'}" ng-pattern="/^\d+$/" ng-model="combine_vcode" ng-model-options="{updateOn: 'blur'}" name="combine_vcode" required/></div>
+		    				<img class="button denglu-1-1-span3" ng-src="http://file1.cits.cn/./images/mobile/mobileCode/0bdff7cec1f64461acedd2bb506b2578.png" src="http://file1.cits.cn/./images/mobile/mobileCode/0bdff7cec1f64461acedd2bb506b2578.png">
+		    			</div>
+		    			<div class="input_intro" ng-show="form.combine_vcode.$invalid">
+		    			     	<span ng-show="form.combine_vcode.$error.pattern">请输入数字</span>
+				    	</div>
+				    		
+		    			<button class="button combine_btn" ng-disabled="form.$invalid || form.combine.$invalid || form.conbine.combine_phone.$invalid || form.combine_vcode.$invalid">验真</button>
+		    		</div>
+	    		</form>
+	    		
+		    	
+		    </ion-content>
+		</ion-view>
+	</ion-nav-view>

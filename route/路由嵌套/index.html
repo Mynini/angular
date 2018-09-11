@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>ui-view</title>
+        <script src="http://lib.baomitu.com/angular.js/1.6.4/angular.min.js"></script>
+        <script src="http://lib.baomitu.com/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+        <link rel="stylesheet" href="common/css.css" />
+        <script src="common/myApp.js"></script>
+
+    </head>
+    <body ng-controller="myCtrl"> 
+    	
+    	<!--路由跳转注意两步： 
+    		1、hash状态：（config配置中的url）  在写页面跳转的时候要搞清楚当前hash状态的基状态是什么
+    		2、状态对应文件：(config中url对应template)  如果地址栏上url是对的（也就是说hash状态 显示对了），而文件出不来那就是要显示的文件父级缺少view
+    	-->
+    	
+    	<!--注释：多视图views可以实现多个ui-view，根据地址或状态的不同使这几个ui-view分别显示不同内容(也可以不显示)，而且这几个状态是同级关系
+                             而嵌套视图的子视图是在父视图下的，父视图下应该有ui-view-->
+                             
+    	
+    	<!--验证：-->
+    	<!--条件：page1里面没有view  
+                               结论：1、 index里用ui-sref方法跳page1.child1，跳到的是page1页面。如果page1有view可跳到page1.child1
+                 2、 index里用go方法跳page1.child1，跳不过去，如果page1页有view就可以
+                 3、从index页跳到page1页后不可再跳到page1.child1-->
+                 
+	     <!--条件：home里面没有view（这里因为index页一开始就加载了home页 它的路由基点已经在/home了 所以和上面有点不一样）  
+	                           结论：1、 index里用ui-sref方法跳home.child1，不可跳home.child1页面，home页面开启view是可以的。
+	             2、 index里用go方法跳home.child1，跳不过去，如果home页有view就可以
+	             3、不可再跳到home.child1-->
+	             
+        <!--问题传参50% back-->        
+        
+        
+        <div class="header">
+        	<h3>当前页面index主页面  下面是公用导航</h3>
+	        <ul class="nav"> 
+	        	<li><a ui-sref="home">跳到home页面</a></li>
+	        	<li><a ui-sref="home.child1">ui-sref方法跳home-child1页面（<i class="color-red">home页面有view才可跳</i>）</a></li>
+	        	<li><a ng-click="goTo('home.child1','home.child1页面')">go方法跳到home-child1页面 （<i class="color-red">home页面有view才可跳</i>）</a></li> <br /><br />
+	        	
+	        	<li><a ui-sref="page1">跳到page1页面</a></li>
+	        	<li><a ui-sref="page1.child1({h1:'page1-child1'})">ui-sref方法跳page1-child1页面（<i class="color-red">page1页面view才可跳</i>）</a></li>
+	        	<li><a ng-click="goTo('page1.child1','page1.child1页面')">go方法跳到page1-child1页面 （<i class="color-red">page1页面view才可跳</i>）</a></li> <br /><br />
+	        	
+	        	<li><a ui-sref="page2({data:'page2'})">跳到page2页面</a></li> <br /><br />
+	        	
+	        	
+	        	<li><a ui-sref="page3" ng-click="printId()">跳到page3页面</a></li>
+	        	
+	        </ul>
+        </div>
+        
+        <div class="main">
+        	<h3 class='main_tit'>这是index页主内容区域</h3>
+        	
+        	<h4 class="view_tit">默认视图显示区域</h3>
+        	<div ui-view  class="main_view" ></div>  <!--默认视图区域-->
+        	
+	        <h4 class="view_tit">v1的视图显示区域 :</h3>
+	        <div ui-view="v1" class="view"></div> <!--名字为v1的视图区域 -->
+	        
+	        <h4 class="view_tit">v2的视图显示区域 :</h4>
+	        <div ui-view="v2" class="view"></div> <!--名字为v2的视图区域 -->
+        </div>
+    </body>
+
+</html>
+
+

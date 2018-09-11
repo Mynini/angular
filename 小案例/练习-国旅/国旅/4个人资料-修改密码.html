@@ -1,0 +1,58 @@
+
+		<ion-nav-view>
+			<ion-view>
+				<div class="bar bar-header">
+					<button class="button back-button  button-icon ion-ios-arrow-left"  ng-click="goPersonal('personal2');"  ></button>
+					<h4>密码设置</h4> 
+		  	    </div>
+			   <form name="form" novalidate>
+			   	 <ion-content class="content_head">
+				    	<div class="row cdfg-security-sign">
+				    		<div class="cdfg-security-col cdfg-password-active">1<div class="text">验证身份</div></div>
+				    		<div class="col cdfg-padding cdfg-security-arrow"><i class="ion-ios-arrow-right"></i></div>
+			    			<div class="cdfg-security-col ">2<div class="text">填写密码</div></div>
+			    			<div class="col cdfg-padding cdfg-security-arrow"><i class="ion-ios-arrow-right"></i></div>
+			    			<div class="cdfg-security-col ">3<div class="text">完成</div></div>
+				    	</div>
+				    	<div class="denglu-1" >
+				    		<label>
+				    			<div class="denglu-1-1">
+				    				<span class="denglu-1-1-span">手机号</span>
+				    				<input type="tel" ng-model="user.mobile" name="mobile" ng-model-options="{updateOn: 'blur'}" ng-pattern="/^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(14[0-9]{1}))+\d{8})$/" placeholder="请输入11位手机号" maxlength="11" required=""> 
+				    				<div class="input_intro_1" ng-show="form.mobile.$invalid">
+				    					<span ng-show="form.mobile.$error.pattern">请输入正确手机号</span>
+				    				</div>
+				    			</div>
+				    		</label><!-- ngIf: !validate -->
+				    		<div class="denglu-1-1">	
+				    			<label>
+				    				<span class="denglu-1-1-span">验证码</span> 
+				    				<input type="tel" ng-model="user.vfc" maxlength="6" ng-model-options="{updateOn: 'blur'}"  ng-pattern="/^[0-9]\d*$/" placeholder="请输入验证码" name="vfc"  required >
+				    			</label>
+				    			<img class="button denglu-1-1-span3" ng-src="http://file1.cits.cn/./images/mobile/mobileCode/0bdff7cec1f64461acedd2bb506b2578.png" src="http://file1.cits.cn/./images/mobile/mobileCode/0bdff7cec1f64461acedd2bb506b2578.png">
+				    			<div class="input_intro" ng-show="form.vfc.$invalid">
+				    			     <span ng-show="form.vfc.$dirty">验证码不能为空</span>
+				    			</div>
+				    		</div>
+				    		<div class="cits-form-button denglu-1-1" >
+				    			<label>
+				    				<span class="denglu-1-1-span">验证码</span>
+				    				<input type="tel" name="vCode" ng-model="user.vCode"  ng-model-options="{updateOn: 'blur'}" ng-pattern="/^\d{6}$/" placeholder="请输入短信动态密码" maxlength="6"  required>
+				    			</label>
+				    			<button class="button button-assertive denglu-1-1-span1 " ng-disabled="!user.mobile || canClick"   ng-click="getTestCode()" 
+             ng-bind="description" >获取动态密码</button>
+					             <div class="input_intro" ng-show="form.vCode.$invalid">
+					                  <span ng-show="form.vCode.$error.pattern">请输入正确验证码</span>
+					             </div>
+				    		</div>
+				    	</div>
+				    	
+				    	<div class="vipreg-5"><p>国旅在线提示您：绑定手机号后，下次您只能使用修改后的新手机号作为登录名进行登录，原手机号将无法作为登录名登录</p></div>
+				    </ion-content>
+				    <div class="bar bar-footer cits-form-button ordersucdi">
+				    	<button class="ordersucdi-1" ng-click="goPersonal('personal2');" >取消</button> <!-- ng-click="goPersonal('personal2')" -->
+				    	<button class="button button-assertive ordersucdi-2 "  ng-click="goPersonal('personal5');" ng-disabled="form.$invalid || form.vCode.$invalid ">下一步</button>
+				    </div>
+			   </form>
+			</ion-view>
+		</ion-nav-view>

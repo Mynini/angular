@@ -1,0 +1,97 @@
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>菜鸟教程(runoob.com)</title>
+            <link href="http://file1.cits.cn/m/lib/ionic/css/ionic.css?v=1.0.0" rel="stylesheet" type="text/css"/>
+    <script src="http://file4.cits.cn/m/lib/ionic/js/ionic.bundle.min.js"></script>
+    
+    <link href="http://file3.cits.cn/m//lib/mobiscroll/css/mobiscroll.custom-3.0.0-beta4.min.css" rel="stylesheet">
+    <script src="http://file6.cits.cn/m/lib/mobiscroll/js/mobiscroll.custom-3.0.0-beta4.min.js"></script>
+        <link rel="stylesheet" href="style.min.css" />
+        <link rel="stylesheet" href="ios.css" />
+        
+       <style>
+        .popup_time_wrap  .mbsc-fr-overlay{background:rgba(204, 204, 204, .3)}
+        .popup_time_wrap .mbsc-fr-hdr{height:44px;line-height: 44px;font-size:16px;color:#7f7f7f !important;background:#f7f7f7;}
+        .popup_time_wrap .mbsc-fr-w{position:relative;}
+       	.popup_time_wrap .mbsc-fr-btn-cont{position:absolute;left:0;top:0;width:100%;display:block;z-index: 2;}
+       	.popup_time_wrap .mbsc-fr-c{background:#fff;font-size:16px;color:#000;font-weight:bold !important;}
+       	.popup_time_wrap .mbsc-fr-btn-c,
+       	.popup_time_wrap .mbsc-fr-btn-s{width:20% !important;height:44px;line-height:44px;background:#f8f8f8;color:#027df8;font-size:18px;position:absolute;top:0;}
+       	.popup_time_wrap .mbsc-fr-btn-c{left:0;}
+       	.popup_time_wrap .mbsc-fr-btn-s{right:0;}
+       	.popup_time_wrap .mbsc-sc-itm-sel{color:#000 !important;}
+       	.popup_time_wrap .mbsc-sc-whl-l{border-top:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;}
+       	
+       	.popup_time_wrap.mbsc-ios .mbsc-sc-itm{color:#000;}
+       	.mbsc-ios.popup_time_wrap.mbsc-fr-top .mbsc-sc-whl-o,
+       	.popup_time_wrap.mbsc-ios.mbsc-fr-bottom .mbsc-sc-whl-o{
+       	 	background:-webkit-gradient( rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1));
+       	 	background:-webkit-linear-gradient( rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1));
+       	 	background:-linear-gradient( rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1));}
+       	 
+       	 .popup_time_wrap.mbsc-ios .mbsc-sc-itm,
+       	 .popup_time_wrap.mbsc-ios .mbsc-sc-itm span{font-weight:bold !important;}
+
+       </style>
+        <script type="text/javascript">
+        
+        var app=angular.module("myApp",['ionic','mobiscroll-datetime',"mobiscroll-select"]);
+        
+        app.controller("myCtrl",function($scope,$ionicModal,$compile){
+
+        	
+        	//时间选择插件
+        	$scope.data1='';  //存当前组件所拼成的最终string值
+        	$scope.mybc_head='';  //存组件头部时间显示dom
+        	$scope.settings = {
+		            theme: 'ios',
+		            display: 'bottom',
+		            wheelOrder: 'iiss',
+		            cssClass:"popup_time_wrap",
+		            rows:"3",
+		            cancelText:"取消",
+		            setText:"确定",
+		            closeOnOverlayTap:false,
+		            height:34,
+		            dateFormat:"dd",
+		            onShow:function(html,valuText,inst){
+		            	$scope.mybc_head=angular.element(document.querySelector(".mbsc-fr-hdr"));
+		            	$scope.mybc_head.text("性别")     //更换dom赋值
+
+		            	
+		            },
+                    onChange:function (valueText, inst) {
+		            	var myDate=valueText.valueText;    //存所选值 （串）
+		            	var tem=myDate.split("/");         //所选值转arr
+		            	$scope.data1=tem[2]+"/"+tem[1]+"/"+tem[0]; 
+		            	$scope.mybc_head.text("性别")     //更换dom赋值
+		            	console.log($scope.myInstance);
+                  },
+                  onBeforeShow:function(event,inst){
+                  	inst.setArrayVal([4, 5],true,true);
+                  }
+	       };	
+
+	        
+
+        	
+        })
+
+      </script>
+    </head>
+    <body class="padding" ng-controller="myCtrl">
+
+      
+      <div class="box" ng-model="mydate" mobiscroll-date="settings" mobiscroll-instance="myInstance"   class="sy_box" >
+      	  <button class="button button-primary" ng-click="openModal()"> 确认框</button>
+	      <input type="text"  value="{{data1}}" readonly=""/>
+	      <!--<button class="button button-primary" ng-click="showInstance()"> hi</button>-->
+      </div>
+
+
+  
+  </body>
+</html>
+
